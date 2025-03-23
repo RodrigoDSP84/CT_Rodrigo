@@ -137,6 +137,48 @@ docker-compose --version
      go mod init ct_rodrigo
      ```
 
+     ---
+
+## Documentação do Banco de Dados
+
+### Estrutura da Tabela `clientes`
+
+A tabela `clientes` é criada automaticamente pela aplicação Go quando ela é executada pela primeira vez. Aqui está a estrutura da tabela:
+
+```sql
+CREATE TABLE IF NOT EXISTS clientes (
+    id SERIAL PRIMARY KEY,
+    cpf TEXT,
+    private BOOLEAN,
+    incompleto BOOLEAN,
+    data_ultima_compra DATE,
+    ticket_medio NUMERIC,
+    ticket_ultima_compra NUMERIC,
+    loja_mais_frequente TEXT,
+    loja_ultima_compra TEXT,
+    cpf_valido BOOLEAN,
+    cnpj_valido BOOLEAN
+);
+```
+
+#### Descrição das Colunas:
+
+| Coluna                | Tipo      | Descrição                                      |
+|-----------------------|-----------|------------------------------------------------|
+| `id`                  | SERIAL    | Chave primária autoincrementada.               |
+| `cpf`                 | TEXT      | CPF do cliente.                                |
+| `private`             | BOOLEAN   | Indica se o cliente é privado (true/false).    |
+| `incompleto`          | BOOLEAN   | Indica se o registro está incompleto.          |
+| `data_ultima_compra`  | DATE      | Data da última compra do cliente.              |
+| `ticket_medio`        | NUMERIC   | Valor médio do ticket de compra.               |
+| `ticket_ultima_compra`| NUMERIC   | Valor do ticket da última compra.              |
+| `loja_mais_frequente` | TEXT      | Loja onde o cliente mais comprou.              |
+| `loja_ultima_compra`  | TEXT      | Loja da última compra do cliente.              |
+| `cpf_valido`          | BOOLEAN   | Indica se o CPF é válido (true/false).         |
+| `cnpj_valido`         | BOOLEAN   | Indica se o CNPJ da loja é válido (true/false).|
+
+---
+
 ### 3. Executando o Projeto
 
 1. **Suba os containers**:

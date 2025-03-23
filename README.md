@@ -64,7 +64,7 @@ docker-compose --version
    cd CT_Rodrigo
    ```
 
-2. **Crie os arquivos necessários**:
+2. **Crie os arquivos necessários (No diretório do projeto CT_Rodrigo, os arquivos já estão criados, desta forma, pode apenas baixá-los na pasta do projeto)**:
    - `Dockerfile`:
      ```Dockerfile
      # Usa a imagem oficial do Go como base

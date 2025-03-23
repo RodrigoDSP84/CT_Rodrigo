@@ -1,0 +1,37 @@
+services:
+  app:
+    build: .
+    container_name: go-app
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_USER=ctrodrigo
+      - DB_PASSWORD=C@s3_t3st
+      - DB_NAME=ctrodrigodb
+      - DB_PORT=5432
+    networks:
+      - mynetwork
+
+  db:
+    image: postgres:13
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: ctrodrigo
+      POSTGRES_PASSWORD: C@s3_t3st
+      POSTGRES_DB: ctrodrigodb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+
+volumes:
+  postgres_data:
+
+networks:
+  mynetwork:
+    driver: bridge
